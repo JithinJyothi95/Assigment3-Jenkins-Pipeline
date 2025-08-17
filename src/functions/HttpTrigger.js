@@ -1,19 +1,15 @@
-const handler = async (context, request) => {
-  const name = request.query.name || (request.body && request.body.name);
+module.exports = async function (context, req) {
+  const name = req.query.name || (req.body && req.body.name);
 
   if (name) {
     context.res = {
       status: 200,
-      body: `Hello, ${name}!`
+      body: `Welcome from Jithin!!`  
     };
   } else {
     context.res = {
       status: 400,
-      body: 'Please provide a name in the query string'
+      body: "Could you please include a name to the query string?"  
     };
   }
-};
-
-module.exports = {
-  handler
 };
