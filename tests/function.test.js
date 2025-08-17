@@ -1,7 +1,7 @@
-const { handler } = require('../src/functions/HttpTrigger');
+const handler = require('../src/functions/HttpTrigger.js');
 
 describe('HttpTrigger function', () => {
-  it('should return greeting with name from query', async () => {
+  test('should return greeting with name from query', async () => {
     const context = {};
     const request = {
       query: {
@@ -15,7 +15,7 @@ describe('HttpTrigger function', () => {
     expect(context.res.body).toBe('Welcome from Jithin!!');
   });
 
-  it('should ask for name if not provided', async () => {
+  test('should ask for name if not provided', async () => {
     const context = {};
     const request = {
       query: {}
@@ -25,5 +25,6 @@ describe('HttpTrigger function', () => {
 
     expect(context.res.status).toBe(400);
     expect(context.res.body).toBe('Could you please include a name to the query string?');
+    console.log(typeof handler);
   });
 });
